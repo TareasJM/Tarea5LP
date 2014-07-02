@@ -10,8 +10,10 @@ Alumnos:
 ========
 
 Personajes creados:
+
 	theViper: D = 40, V = 40, F = 20, W = baston, A = armadura_ligera.
 	theMountain: D = 30, V = 10, F = 60, W = espada_larga, A = armadura_completa.
 
 La pelea:
+
 	?- pelea(theViper, theMountain, Winner).
