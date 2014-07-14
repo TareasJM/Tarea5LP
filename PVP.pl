@@ -20,6 +20,8 @@ fuerzaTotal(X,FT):- personaje(X,_,_,FP,W,_), aumento(W,[_,_,FW]), plus(FP,FW,FT)
 numeroGolpes(X,DE,NG):- fuerzaTotal(X,FT), velocidadTotal(X,VT), U is DE * 100, D is VT * FT, NG is U / D. 
 
 %% pelea compara los NG de cada personaje, si X < Y, retorna X, si no, retorna Y (gracias a la segunda declaración)
+pelea(X,Y,Z):- personaje(X, D, V, F, _, _), S is (D + V + F), S > 100, Z = personajeXincorrecto,!. 
+pelea(X,Y,Z):- personaje(Y, D, V, F, _, _), S is (D + V + F), S > 100, Z = personajeYincorrecto,!. 
 pelea(X,Y,Z):- defensaTotal(X,DX), defensaTotal(Y,DY), numeroGolpes(X,DY,GX), numeroGolpes(Y,DX,GY), GX < GY, Z = X,!.
 pelea(X,Y,Z):- defensaTotal(X,DX), defensaTotal(Y,DY), numeroGolpes(X,DY,GX), numeroGolpes(Y,DX,GY), GY < GX, Z = Y,!.
 pelea(X,Y,Z):- Z = empate,!.
